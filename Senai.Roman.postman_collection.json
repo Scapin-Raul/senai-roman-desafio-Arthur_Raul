@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "684a7443-fdfa-4712-b457-ada6f1da5891",
+		"name": "Senai.Roman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Professores",
+			"item": [
+				{
+					"name": "Professores.Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\":\"Cleiton\",\n\t\"senha\":\"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.4.203:5000/api/login",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"4",
+								"203"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "52de1437-647b-4eb4-9332-0745f6cfdfc5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "5294d1a7-1543-4833-a660-14435f1713b4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Projetos",
+			"item": [
+				{
+					"name": "Projetos.Listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnaXZlbl9uYW1lIjoiQ2xlaXRvbiIsImp0aSI6IjEiLCJleHAiOjE1NzI5NTMyNTAsImlzcyI6IlJvbWFuLldlYkFwaSIsImF1ZCI6IlJvbWFuLldlYkFwaSJ9.3jfsn4E5BMw-Qrw3_3eCm1PMY3qGfqa-iJQQXOMOtIU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.4.203:5000/api/projetos",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"4",
+								"203"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"projetos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Projetos.Cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnaXZlbl9uYW1lIjoiQ2xlaXRvbiIsImp0aSI6IjEiLCJleHAiOjE1NzI5NTMyNTAsImlzcyI6IlJvbWFuLldlYkFwaSIsImF1ZCI6IlJvbWFuLldlYkFwaSJ9.3jfsn4E5BMw-Qrw3_3eCm1PMY3qGfqa-iJQQXOMOtIU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Slide\",\n\t\"descricao\": \"sddfwsfgweffsadf\",\n    \"Idtema\": 1,\n    \"Idprofessor\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.4.203:5000/api/projetos",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"4",
+								"203"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"projetos"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Temas",
+			"item": [
+				{
+					"name": "Temas.Listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnaXZlbl9uYW1lIjoiQ2xlaXRvbiIsImp0aSI6IjEiLCJleHAiOjE1NzI5NjA1MjAsImlzcyI6IlJvbWFuLldlYkFwaSIsImF1ZCI6IlJvbWFuLldlYkFwaSJ9.kCenUMtyHH8EG7WJnxCzirqABijyEgFKj3_VYrmZYHo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.4.203:5000/api/temas",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"4",
+								"203"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"temas"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

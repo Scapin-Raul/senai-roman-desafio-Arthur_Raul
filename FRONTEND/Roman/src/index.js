@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 
 import ProjetosScreen from './pages/projetos';
+import CadastrarProjetoScreen from './pages/cadastrarProjeto';
 import ProfileScreen from './pages/profile';
 import LoginScreen from './pages/login';
 
@@ -14,6 +15,9 @@ const AuthStack = createStackNavigator({
 const MainNavigator = createBottomTabNavigator({
     Projetos: {
       screen: ProjetosScreen,
+    },
+    CadastrarProjeto: {
+      screen: CadastrarProjetoScreen,
     },
     Profile: {
       screen: ProfileScreen,

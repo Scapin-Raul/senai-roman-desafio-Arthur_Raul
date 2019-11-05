@@ -42,6 +42,16 @@ namespace Roman
                 };
             });
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                new Swashbuckle.AspNetCore.Swagger.Info
+                {
+                    Title = "OpFlix API",
+                    Version = "v1"
+                });
+            });
+
 
             services.AddCors(options =>
             {
@@ -67,6 +77,11 @@ namespace Roman
 
 
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
         }
     }
 }

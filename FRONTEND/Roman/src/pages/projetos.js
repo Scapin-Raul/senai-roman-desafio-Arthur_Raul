@@ -9,62 +9,70 @@ class Projetos extends Component {
       projetos: [],
       TemaSelecionado: "",
       temas: [],
+      filtrada: [],
+      i: 0,
     };
   }
 
   componentDidMount() {
     this._carregarProjetos();
-
     this._carregarTemas();
   }
-
+  
+  _igual = async () =>{
+    await this.setState({filtrada : this.state.projetos});
+  }
+  
   _carregarTemas = async () => {
     await fetch('http://192.168.4.203:5000/api/temas', {
       method: 'GET',   
       headers: {
         'Accept': 'application/json',
         "Authorization":"Bearer " + await AsyncStorage.getItem('@roman:token')
-    }
+      }
     })
-      .then(resposta => resposta.json())
-      .then(data => this.setState({temas: data}))
-      .catch(erro => console.warn(erro));
+    .then(resposta => resposta.json())
+    .then(data => this.setState({temas: data}))
+    .catch(erro => console.warn(erro));
   }
-
+  
   _carregarProjetos = async () => {
     await fetch('http://192.168.4.203:5000/api/projetos', {
       method: 'GET',   
       headers: {
         'Accept': 'application/json',
         "Authorization":"Bearer " + await AsyncStorage.getItem('@roman:token')
-    }
+      }
     })
-      .then(resposta => resposta.json())
-      .then(data => this.setState({projetos: data}))
-      .catch(erro => console.warn(erro));
+    .then(resposta => resposta.json())
+    .then(data => this.setState({filtrada: data}))
+    .catch(erro => console.warn(erro));
   };
 
+  
   _filtrar = async (itemValue) =>{
     
-    if(itemValue == "Temas"){
-      await this._carregarProjetos;
+    this._carregarProjetos();
+    
+    
+     this.setState({TemaSelecionado: itemValue});
+      // this._carregarProjetos;
+      // await this._carregarProjetos;
+
+      let listaFiltrada = this.state.filtrada.filter((projeto) => {
+        return projeto.tema === itemValue;
+      })
       
+      this.setState({filtrada: listaFiltrada})
+
+      // var listaProjetosFiltrado = [];
+      // await this.state.projetos.forEach(e => {
+      //   if(e.tema == this.state.TemaSelecionado) listaProjetosFiltrado.push(e)
+      // });
+      // await this.setState({projetos: listaProjetosFiltrado});
+      // console.warn(this.state.TemaSelecionado);
     }
-    else{
-      
-      await this.setState({TemaSelecionado: itemValue});
-      await this._carregarProjetos;
-      
-      var listaProjetosFiltrado = [];
-      await this.state.projetos.forEach(e => {
-        if(e.tema == this.state.TemaSelecionado) listaProjetosFiltrado.push(e)
-      });
-      
-      await this.setState({projetos: listaProjetosFiltrado});
-      
-      console.warn(this.state.TemaSelecionado);
-    }
-}
+// }
 
   render() {
     return (
@@ -83,9 +91,9 @@ class Projetos extends Component {
           <Text>Descrição</Text>
           <Text>Professor</Text>
         </View>
-
+                  
         <FlatList
-          data={this.state.projetos}
+          data={this.state.filtrada}
           keyExtractor={item => item.idProjeto}
           renderItem={({item}) => (
             <View style={styles.borda}>
